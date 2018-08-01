@@ -3,18 +3,20 @@
 \alias{double.truncation}
 \docType{package}
 \title{
-\packageTitle{double.truncation}
+Analysis of Doubly-Truncated Data
 }
 \description{
-\packageDescription{double.truncation}
+Likelihood-based inference methods with doubly-truncated data are developed under various models.
+ Parametric models from the special exponential family (SEF) are based on
+ Hu and Emura (2015) <doi:10.1007/s00180-015-0564-z> and
+ Emura, Hu and Konno (2017) <doi:10.1007/s00362-015-0730-y>.
 }
 \details{
 Details are seen from the references.
 }
 \author{
-\packageAuthor{double.truncation}
-
-Maintainer: \packageMaintainer{double.truncation}
+Takeshi Emura 
+Maintainer: Takeshi Emura <takeshiemura@gmail.com>
 }
 \references{
 Hu YH, Emura T (2015) Maximum likelihood estimation for a special exponential family

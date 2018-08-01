@@ -11,7 +11,8 @@ Maximum likelihood estimates and their standard errors (SEs) are computed.
 }
 \usage{
 PMLE.SEF3.free(u.trunc, y.trunc, v.trunc,
- tau1 = min(y.trunc), tau2 = max(y.trunc), epsilon = 1e-04)
+ tau1 = min(y.trunc), tau2 = max(y.trunc),
+ epsilon = 1e-04, D1=20, D2=10, D3=1, d1=6, d2=0.5)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,6 +22,11 @@ PMLE.SEF3.free(u.trunc, y.trunc, v.trunc,
   \item{tau1}{lower support}
   \item{tau2}{upper support}
   \item{epsilon}{error tolerance for Newton-Raphson}
+  \item{D1}{Divergence condition for eta_1}
+  \item{D2}{Divergence condition of eta_2}
+  \item{D3}{Divergence condition of eta_3}
+  \item{d1}{Range of randomization for eta_1}
+  \item{d2}{Range of randomization for eta_2}
 }
 \details{
 Details are seen from the references.

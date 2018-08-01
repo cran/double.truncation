@@ -10,7 +10,8 @@ Maximum likelihood estimates and their standard errors (SEs) are computed.
  Also computed are the likelihood value, AIC, and other qnantities.
 }
 \usage{
-PMLE.SEF3.positive(u.trunc, y.trunc, v.trunc, tau2 = max(y.trunc), epsilon = 1e-04)
+PMLE.SEF3.positive(u.trunc, y.trunc, v.trunc, tau2 = max(y.trunc),
+ epsilon = 1e-04, D1=20, D2=10, D3=1, d1=6, d2=0.5)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,6 +20,11 @@ PMLE.SEF3.positive(u.trunc, y.trunc, v.trunc, tau2 = max(y.trunc), epsilon = 1e-
   \item{v.trunc}{upper truncation limit}
   \item{tau2}{upper support}
   \item{epsilon}{error tolerance for Newton-Raphson}
+  \item{D1}{Divergence condition for eta_1}
+  \item{D2}{Divergence condition of eta_2}
+  \item{D3}{Divergence condition of eta_3}
+  \item{d1}{Range of randomization for eta_1}
+  \item{d2}{Range of randomization for eta_2}
 }
 \details{
 Details are seen from the references.

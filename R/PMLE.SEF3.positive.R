@@ -1,6 +1,5 @@
-PMLE.SEF3.positive <-
-function(u.trunc,y.trunc,v.trunc,
-                        tau2=max(y.trunc),epsilon=0.0001){
+PMLE.SEF3.positive <- function(u.trunc,y.trunc,v.trunc,tau2=max(y.trunc),
+         epsilon=0.0001,D1=20,D2=10,D3=1,d1=6,d2=0.5){
   
   n=length(y.trunc)
   u.max=u.trunc
@@ -119,9 +118,9 @@ SF=matrix(,3,1)
     Error1=abs(Eta[k+1,1]-Eta[k,1])
     Error2=abs(Eta[k+1,2]-Eta[k,2])
     Error3=abs(Eta[k+1,3]-Eta[k,3])
-    if( (Error1<0.0001)&(Error2<0.0001)&(Error3<10^(-7)) ){break
-    }else if( (Error1>20)|(Error2>10)|(Error3>1) ){
-      Eta[1,]=c(mean(y.trunc)/var(y.trunc)+runif(1,-6,6),-1/(2*var(y.trunc))+runif(1,-0.5,0.5),0)
+    if( (Error1<epsilon)&(Error2<epsilon)&(Error3<epsilon) ){break
+    }else if( (Error1>D1)|(Error2>D2)|(Error3>D3) ){
+      Eta[1,]=c(mean(y.trunc)/var(y.trunc)+runif(1,-d1,d1),-1/(2*var(y.trunc))+runif(1,-d2,d2),0)
       k=0
     }
     k=k+1
