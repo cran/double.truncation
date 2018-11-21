@@ -18,7 +18,7 @@ Likelihood-based inference methods with doubly-truncated data are developed unde
 Details are seen from the references.
 }
 \author{
-Takeshi Emura 
+Takeshi Emura, Ya-Hsuan Hu, Chung-Yan Huang
 Maintainer: Takeshi Emura <takeshiemura@gmail.com>
 }
 \references{

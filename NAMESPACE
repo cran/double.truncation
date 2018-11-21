@@ -1,2 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("stats", "dnorm", "integrate", "pnorm", "runif", "var")
+importFrom("stats", "dnorm", "integrate", "pnorm", "runif", "var", "IQR", "median", "qchisq", "qnorm", "sd")
