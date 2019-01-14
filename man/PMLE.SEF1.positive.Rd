@@ -35,6 +35,9 @@ Hu YH, Emura T (2015) Maximum likelihood estimation for a special exponential fa
 
 Emura T, Hu YH, Konno Y (2017) Asymptotic inference for maximum likelihood estimators
  under the special exponential family with double-truncation, Stat Pap 58 (3): 877-909
+
+Dorre A, Emura T (2019) Analysis of Doubly Truncated Data, An Introduction,
+ JSS Research Series in Statistics, Springer
 }
 \author{Takeshi Emura, Ya-Hsuan Hu}
 

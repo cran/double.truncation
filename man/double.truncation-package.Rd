@@ -36,6 +36,6 @@ Emura T, Hu YH, Konno Y (2017) Asymptotic inference for maximum likelihood estim
  under the special exponential family with double-truncation, Stat Pap 58 (3): 877-909
 
 Dorre A, Emura T (2019) Analysis of Doubly Truncated Data, An Introduction,
- JSS Research Series in Statistics, Springer, Singapore
+ JSS Research Series in Statistics, Springer
 }
 \keyword{ package }

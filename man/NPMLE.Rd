@@ -34,6 +34,9 @@ J Am Stat Assoc 94: 824-834
 Emura T, Konno Y, Michimae H (2015). Statistical inference based on the 
 nonparametric maximum likelihood estimator under double-truncation. 
 Lifetime Data Analysis 21: 397-418
+
+Dorre A, Emura T (2019) Analysis of Doubly Truncated Data, An Introduction,
+ JSS Research Series in Statistics, Springer
 }
 \author{Takeshi Emura}
 
