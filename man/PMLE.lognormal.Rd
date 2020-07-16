@@ -33,10 +33,10 @@ Details are seen from the references.
   \item{Hessian}{Hessian matrix at the converged value}
 }
 \references{
-Huang CY, Tseng YK, Emura T, Likelihood-based analysis of doubly-truncated data under
- the location-scale and AFT model (major revision under Computational Statistics)
+Dorre A, Huang CY, Tseng YK, Emura T (2020-) Likelihood-based analysis of
+ doubly-truncated data under the location-scale and AFT model, Computation Stat 
 }
-\author{Huang CY, Takeshi Emura}
+\author{Takeshi Emura}
 
 \examples{
 ## A data example from Efron and Petrosian (1999) ## 
