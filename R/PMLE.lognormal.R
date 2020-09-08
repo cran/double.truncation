@@ -1,14 +1,13 @@
 PMLE.lognormal <-
-function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
-  
-  
+function(u.trunc,y.trunc,v.trunc,epsilon=1e-5,D1=2,D2=2,d1=2,d2=2){
+
+
   # define functions for fi
-  fi_func = function(w){ dnorm(w, 0, 1) }
-  Fi_func = function(w){ pnorm(w, 0, 1) }
-  fi1_func = function(w){ ( 1/sqrt(2*pi) ) * (-w) * exp( - w^2 / 2 ) }
-  fi2_func = function(w){ ( -1/sqrt(2*pi) ) * exp( - w^2 / 2 ) * (1 - w^2) }
-  
-  
+  fi_func=function(w){dnorm(w)}
+  Fi_func=function(w){pnorm(w)}
+  fi1_func=function(w){(1/sqrt(2*pi))*(-w)*exp(-w^2/2)}
+  fi2_func=function(w){(-1/sqrt(2*pi))*exp(-w^2/2)*(1-w^2)}
+
   # define functions for Hui, Hvi, Kui, Kvi
   Hvi = function(para){
     m = para[1]
@@ -20,7 +19,7 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     B = Fi_func(Zv) - Fi_func(Zu)
     return(A/B)
   }
-  
+
   Hui = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -31,7 +30,7 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     B = Fi_func(Zv) - Fi_func(Zu)
     return(A/B)
   }
-  
+
   Kvi = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -42,7 +41,7 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     B = Fi_func(Zv) - Fi_func(Zu)
     return(A/B)
   }
-  
+
   Kui = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -53,22 +52,8 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     B = Fi_func(Zv) - Fi_func(Zu)
     return(A/B)
   }
-  
-  # likelihood function
-  lik = function(para){
-    m = para[1]
-    s = exp( para[2] )
-    Zy = ( y.trunc - m ) / s
-    Zu = ( u.trunc - m ) / s
-    Zv = ( v.trunc - m ) / s 
-    A = length(y.trunc) * log(s)
-    B = sum( log(fi_func(Zy)) )
-    C = sum( log(Fi_func(Zv)  - Fi_func(Zu)) )
-    return( - A + B - C )
-  }
-  
+
   # score function
-  # score function 
   first_mu = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -76,11 +61,11 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     Zu = ( u.trunc - m ) / s
     Zv = ( v.trunc - m ) / s
     A = sum( fi1_func(Zy) / fi_func(Zy) )
-    B = sum( Hvi(para) - Hui(para) ) 
+    B = sum( Hvi(para) - Hui(para) )
     total = (1/s) * (-A + B)
-    return(total)	
+    return(total)
   }
-  
+
   first_sig = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -93,14 +78,14 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     total = -A - B + C
     return(total)
   }
-  
+
   score_fun = function(para){
     SF1 = first_mu(para)
     SF2 = first_sig(para) * exp( para[2] )
     A = matrix(c(SF1, SF2), nrow = 2, ncol = 1)
-    return(A)	
+    return(A)
   }
-  
+
   # Hessian matrix
   second_mu = function(para){
     m = para[1]
@@ -115,7 +100,7 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     total = (1/s^2) * ( A - B - C + D )
     return(total)
   }
-  
+
   second_sig = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -129,9 +114,9 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     E = sum( Zv^2 * Kvi(para) - Zu^2 * Kui(para) )
     F = sum( (Zv * Hvi(para) - Zu * Hui(para))^2 )
     total = (1/s^2) * ( A + B - C - D - E + F )
-    return(total)	
+    return(total)
   }
-  
+
   second_musig = function(para){
     m = para[1]
     s = exp( para[2] )
@@ -145,8 +130,8 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     total = (1/s^2) * ( A - B - C + D )
     return(total)
   }
-  
-  hessian_fun = function(para){	
+
+  hessian_fun = function(para){
     H11 = second_mu(para)
     H22 = second_sig(para) * exp(2*para[2]) + score_fun(para)[2]
     H12 = second_musig(para) * exp( para[2] )
@@ -154,22 +139,18 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     A = matrix( c(H11, H12, H21, H22), nrow = 2, ncol = 2 )
     return(A)
   }
-  
-  
+
+
   # RNR-algorithm
   random = 0
-  theta = matrix(,1, 2)
-  theta_old = matrix(, 1, 2)
-  theta_new = matrix(, 1, 2)
-  
-  # initial value 
-  theta_0 = c( mean(y.trunc), log(sd(y.trunc)) )
-  
-  # if we change initial value, the initial value in repeat function shoud also change
-  theta[1, ] = theta_0
-  
+  theta=theta_old=theta_new=matrix(,1, 2)
+
+  # initial value
+  theta_0=c(mean(y.trunc),log(sd(y.trunc)))
+  theta[1,]=theta_0
+
   h = 1
-  repeat{	
+  repeat{
     theta_old = theta[1:h, ]
     theta_new = theta[h, ]-solve(hessian_fun(theta[h, ]))%*%score_fun(theta[h, ])
     theta = matrix(,h+1,2)
@@ -183,14 +164,14 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
       theta[1, ] = theta_0 + c(runif(1, -d1, d1), runif(1, -d2, d2))
       h = 0
       random = random + 1
-    }else if (max(abs(theta[h+1, ]-theta[h, ]))<epsilon){	
+    }else if (max(abs(theta[h+1, ]-theta[h, ]))<epsilon){
       break
     }
     h = h + 1
   }
   muhat = theta[h+1, 1]
   sighat = exp(theta[h+1, 2])
- 
+
   # likelihood function (without transformation)
   likn = function(para){
     m = para[1]
@@ -203,50 +184,47 @@ function(u.trunc,y.trunc,v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2){
     C = sum( log( Fi_func(Zv)  - Fi_func(Zu) ) )
     return( - A + B - C )
   }
-  logL = likn(c(muhat, sighat))
+  logL=likn(c(muhat,sighat))
 
   # transform the hessian to (mu, sigma)
   hessian_ms = function(para){
     m = para[1]
     s = para[2]
-    trans = matrix(c(1,0,0,s^(-1)), ncol = 2, nrow = 2)
     A = matrix(, 2, 2)
     A[1, 1] = hessian_fun(c(m, log(s)))[1, 1]
     A[2, 2] = (hessian_fun(c(m, log(s)))[2,2] - score_fun(c(m, log(s)))[2])/s^2
     A[2, 1] = hessian_fun(c(m, log(s)))[2, 1]/s
     A[1, 2] = A[2, 1]
-    B = trans%*%A%*%trans
     return(A)
   }
-  
+
   # observed information (mu, sigma)
-  info = - hessian_ms(c(muhat, sighat))
+  info=-hessian_ms(c(muhat,sighat))
 
   # inverse of scaled information
   alpha = 0.05
   n = length(y.trunc)
   lambda = solve(info * (sighat^2) / n )
   g0 = qchisq(1-alpha, 2) / n
- 
+
   ## Interval estimates ##
-  info = - hessian_ms(c(muhat, sighat))
-  alpha=0.05
+  info=-hessian_ms(c(muhat, sighat))
   SE_mu=sqrt(solve(info)[1, 1])
-  Low_mu=muhat+qnorm(alpha/2,0,1)*SE_mu
-  Up_mu=muhat+qnorm(1-alpha/2,0,1)*SE_mu
+  Low_mu=muhat-1.96*SE_mu
+  Up_mu=muhat+1.96*SE_mu
   SE_sig=sqrt(solve(info)[2, 2])
-  Low_sig=sighat*exp(qnorm(alpha/2, 0, 1)*SE_sig/sighat)
-  Up_sig=sighat*exp(qnorm(1-alpha/2, 0, 1)*SE_sig/sighat)
-  
+  Low_sig=sighat*exp(-1.96*SE_sig/sighat)
+  Up_sig=sighat*exp(1.96*SE_sig/sighat)
+
   mu_res=c(estimate=muhat,SE=SE_mu,Low=Low_mu,Up=Up_mu)
   sig_res=c(estimate=sighat,SE=SE_sig,Low=Low_sig,Up=Up_sig)
-  
-  p = 2
-  AIC = -2 * logL + 2 * p
-  convergence_res = c(logL = logL, DF = p, AIC = AIC, No.of.iterations = h)
-  list(estimate = c(mu = muhat, sigma =sighat), 
-       SE = c(mu = SE_mu, sigma = SE_sig), 
-       convergence = convergence_res, Score = as.vector(score_fun(theta[h, ])), 
-       Hessian = -info)
+
+  p=2
+  AIC=-2*logL+2*p
+  convergence_res=c(logL=logL,DF=p,AIC=AIC,
+                    No.of.iterations=h,No.of.randomization=random)
+  list(estimate=c(mu=muhat,sigma=sighat),SE=c(mu=SE_mu,sigma=SE_sig),
+       convergence=convergence_res,
+       Score=as.vector(score_fun(theta[h,])),Hessian=-info)
   #round(cbind(theta[,1],exp(theta[,2])),2)
 }

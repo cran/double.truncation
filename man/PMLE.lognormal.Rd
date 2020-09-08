@@ -34,7 +34,7 @@ Details are seen from the references.
 }
 \references{
 Dorre A, Huang CY, Tseng YK, Emura T (2020-) Likelihood-based analysis of
- doubly-truncated data under the location-scale and AFT model, Computation Stat 
+ doubly-truncated data under the location-scale and AFT model, Computation Stat, DOI:10.1007/s00180-020-01027-6 
 }
 \author{Takeshi Emura}
 
