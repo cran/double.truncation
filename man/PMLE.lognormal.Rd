@@ -5,25 +5,25 @@
 Parametric Inference for the lognormal model
 }
 \description{
-Maximum likelihood estimates and their standard errors (SEs) are computed.
- Also computed are the likelihood value, AIC, and other qnantities.
+Maximum likelihood estimates (MLEs) and their standard errors (SEs) are computed for the lognormal model
+ based on doubly-truncated data (Dorre et al. 2021). Also computed are the likelihood value, AIC, and other qnantities.
 }
 \usage{
 PMLE.lognormal(u.trunc, y.trunc, v.trunc,epsilon = 1e-5,D1=2,D2=2,d1=2,d2=2)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{u.trunc}{lower truncation limit}
-  \item{y.trunc}{variable of interest}
-  \item{v.trunc}{upper truncation limit}
-  \item{epsilon}{error tolerance for Newton-Raphson}
-  \item{D1}{Randomize the intial value if |mu_h-mu_{h+1}|>D1}
-  \item{D2}{Randomize the intial value if |sigma_h-sigma_{h+1}|>D2}
-  \item{d1}{U(-d1,d1) is added to the intial value of mu}
-  \item{d2}{U(-d2,d2) is added to the intial value of sigma}
+  \item{u.trunc}{a vector of lower truncation limits}
+  \item{y.trunc}{a vector of variables of interest}
+  \item{v.trunc}{a vector of upper truncation limits}
+  \item{epsilon}{a small positive number for the error tolerance for Newton-Raphson iterations}
+  \item{D1}{a positive number: Randomize the intial value for a divergent iteration (the updated amount for mu is greater than D1)}
+  \item{D2}{a positive number: Randomize the intial value for a divergent iteration (the updated amount for sigma is greater than D2)}
+  \item{d1}{a positive number: For a divergent iteration, U(-d1,d1) is added to the intial value of mu}
+  \item{d2}{a positive number: For a divergent iteration, U(-d2,d2) is added to the intial value of log(sigma)}
 }
 \details{
-Details are seen from the references.
+A randomized Newton–Raphson algorithm (Section 3.2 of Dorre et al.(2021)) was employed to compute the MLE.
 }
 \value{
   \item{eta}{estimates}
@@ -33,8 +33,8 @@ Details are seen from the references.
   \item{Hessian}{Hessian matrix at the converged value}
 }
 \references{
-Dorre A, Huang CY, Tseng YK, Emura T (2020-) Likelihood-based analysis of
- doubly-truncated data under the location-scale and AFT model, Computation Stat, DOI:10.1007/s00180-020-01027-6 
+Dorre A, Huang CY, Tseng YK, Emura T (2021) Likelihood-based analysis of
+ doubly-truncated data under the location-scale and AFT model, Computation Stat 36(1): 375-408 
 }
 \author{Takeshi Emura}
 

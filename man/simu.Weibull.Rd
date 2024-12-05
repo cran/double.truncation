@@ -20,7 +20,7 @@ simu.Weibull(n,mu,sigma,delta)
 \details{
 The data are generated from the random vector (U,Y,V) subject to the inclusion criterion U<=Y<=V.
 The random vector are defined as U=mu-delta+sigma*W, Y=mu+sigma*W, and U=mu+delta+sigma*W, where P(W>w)=exp(-exp(w)).
-See Section 5.1 of Dorre et al. (2020-) for details. The inclusion probability is P(U<=Y<=V).
+See Section 5.1 of Dorre et al. (2021) for details. The inclusion probability is P(U<=Y<=V).
 }
 \value{
   \item{u}{lower truncation limits}
@@ -28,13 +28,13 @@ See Section 5.1 of Dorre et al. (2020-) for details. The inclusion probability i
   \item{v}{upper truncation limits}
 }
 \references{
-Dorre A, Huang CY, Tseng YK, Emura T (2020-) Likelihood-based analysis of
- doubly-truncated data under the location-scale and AFT model, Computation Stat, DOI:10.1007/s00180-020-01027-6
+Dorre A, Huang CY, Tseng YK, Emura T (2021) Likelihood-based analysis of
+ doubly-truncated data under the location-scale and AFT model, Computation Stat 36(1): 375-408
 }
 \author{Takeshi Emura}
 
 \examples{
-## A simulation from Dorre et al.(2020) ##
+## A simulation from Dorre et al.(2021) ##
 simu.Weibull(n=100,mu=5,sigma=2,delta=2.08)
 
 Dat=simu.Weibull(n=100,mu=5,sigma=2,delta=2.08)

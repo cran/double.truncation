@@ -1,2 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("stats", "dnorm", "integrate", "pnorm", "runif", "var", "IQR", "median", "qchisq", "qnorm", "sd")
+importFrom("MASS", "mvrnorm")
+importFrom("graphics", "abline")

@@ -1,6 +1,7 @@
-3ad2ccec7f90cc34279a0c73969bee0c *DESCRIPTION
-3f0a80208607671ee557405011c63c26 *NAMESPACE
-a4332badd4ca05b7728d3a2e47596106 *R/NPMLE.R
+094735b3c10163ee2ce896fbcb071d5a *DESCRIPTION
+87807cdd8020a02f4c9f1da98fd3adfd *NAMESPACE
+65ea3fc284f060854ddf1df00d049dc4 *R/GoF.R
+e72338f9f1e1189356acb4137744eff7 *R/NPMLE.R
 a69921893fcc233ff677d734a21f70e3 *R/PMLE.SEF1.free.R
 f61865c30a75a8d0bb5604d6d2dab511 *R/PMLE.SEF1.negative.R
 53093c7e631457c52ecdc4fa46247846 *R/PMLE.SEF1.positive.R
@@ -12,7 +13,8 @@ f569a58824d0baacba5b12e92912d086 *R/PMLE.SEF3.positive.R
 7ad0be546a4037cb9ecce6919d7cc16c *R/PMLE.loglogistic.R
 35bb80f4aa863a002f4f4a29a84ed2f4 *R/PMLE.lognormal.R
 7238aaa42cc7f31a7f29c5dbfde75b3e *R/simu.Weibull.R
-d5948f262caca2819b79d02dee37fbd8 *man/NPMLE.Rd
+032ec95c5b983575645108cf944beaf3 *man/GoF.Rd
+bb4416345ea73890e1a9b1eb92b450ee *man/NPMLE.Rd
 64ac6a18f4352be5017b19ff733ca51e *man/PMLE.SEF1.free.Rd
 496382538c5157cf12442ec2195b7314 *man/PMLE.SEF1.negative.Rd
 aaa4fab930751a4f5504617c904cad8a *man/PMLE.SEF1.positive.Rd
@@ -20,8 +22,8 @@ aaa4fab930751a4f5504617c904cad8a *man/PMLE.SEF1.positive.Rd
 5b7642073fbeeb23211cfc78a6d3e065 *man/PMLE.SEF3.free.Rd
 0709e8dc1136afaa532e21902f6ec383 *man/PMLE.SEF3.negative.Rd
 5ef9b3d2a60292913f4487e4619a56f0 *man/PMLE.SEF3.positive.Rd
-e116391a088709a41e2ffc48e705e6f8 *man/PMLE.Weibull.Rd
-459dd1dc63d15351f45876836bd84c87 *man/PMLE.loglogistic.Rd
-2a11cbdcb3557347bf04dc1502a0bf97 *man/PMLE.lognormal.Rd
-14664c058ce8b6ad689f7a04e2594d56 *man/double.truncation-package.Rd
-004dd9e69427aed7cde590435eb1ca83 *man/simu.Weibull.Rd
+e248c37bfcfcf38283ddc923a34272f3 *man/PMLE.Weibull.Rd
+c9a9f79cf876327f70185d340c97ebe7 *man/PMLE.loglogistic.Rd
+e8f8830c341465fa67f317773d869190 *man/PMLE.lognormal.Rd
+94ed3829f5c37aafda5bab55dd4bd799 *man/double.truncation-package.Rd
+7fe9b0d6d1bbc4029994a5585f6ef8b0 *man/simu.Weibull.Rd
